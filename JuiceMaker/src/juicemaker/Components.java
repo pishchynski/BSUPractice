@@ -2,20 +2,30 @@
 package juicemaker;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import javafx.util.Pair;
 
 public class Components {
-    private Map<Integer, String> components = new TreeMap<Integer,String>();
+    private ArrayList<Pair<String, Integer> > components = new ArrayList<Pair<String,Integer> >();
+    
+    private class NumComp implements Comparator {
+        public int compare(Object obj1, Object obj2) {
+            Pair<String, Integer> component1 = (Pair<String, Integer>)obj1;
+            Pair<String, Integer> component2 = (Pair<String, Integer>)obj2;
+            return component2.getValue() - component1.getValue();
+        }
+    }
     
     Components(ArrayList<ArrayList<String> > juicesComponents) {
         this.components = formMap(juicesComponents);   
     }
-    private Map<Integer, String> formMap(ArrayList<ArrayList<String> > juicesComponents) {
-        Map<String, Integer> compsByName = new TreeMap<String, Integer>();
-        Map<Integer, String> compsByNum = new TreeMap<Integer,String>();
+    private ArrayList<Pair<String, Integer> > formMap(ArrayList<ArrayList<String> > juicesComponents) {
+        Map<String, Integer> compsByName = new TreeMap<String,Integer>();
+        ArrayList<Pair<String, Integer> > components = new ArrayList<Pair<String, Integer> >();
         int juicesNum = juicesComponents.size();
         int compsNum;
         int i;
@@ -38,15 +48,51 @@ public class Components {
         String tempCompName; 
         while(it.hasNext()) {
             tempCompName = it.next();
-            compsByNum.put(compsByName.get(tempCompName), tempCompName);
+            components.add(new Pair<String, Integer>(tempCompName, compsByName.get(tempCompName)));
         }
-        return compsByNum;
-    }
-    String get(int num) {
-        return components.get(num);
+        components.sort(new NumComp());
+        return components;
     }
     
-    public void remove(String name) {
-        components.remove(name);
+    public String getName(int index) {
+        return components.get(index).getKey();
     }
+    
+    public int getNum(String name){
+        int n = components.size();
+        int i;
+        for(i = 0; i < n; ++i){
+            if((components.get(i)).getKey().equals(name)){
+                return components.get(i).getValue();
+            }
+        }
+        return -1;
+    }
+    
+    public void setNum(String name, int num) {
+        int n = components.size();
+        int i;
+        for(i = 0; i < n; ++i){
+            if((components.get(i)).getKey().equals(name)){
+                 components.set(i, new Pair<String, Integer>(name, num));
+            }
+        }
+    }
+    
+    public void sort() {
+         components.sort(new NumComp());
+    }
+    
+    
+    public void remove(String name) {
+        int n = components.size();
+        int i;
+        for(i = 0; i < n; ++i){
+            if((components.get(i)).getKey().equals(name)){
+                components.remove(i);
+                break;
+            }
+        }
+    }
+    
 }

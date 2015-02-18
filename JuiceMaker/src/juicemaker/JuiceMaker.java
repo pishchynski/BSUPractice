@@ -1,8 +1,6 @@
 
 package juicemaker;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-import com.sun.java.swing.plaf.windows.resources.windows;
 import java.io.*;
 import java.util.*;
 
@@ -61,17 +59,43 @@ public class JuiceMaker {
         ArrayList<Juice> juices = new ArrayList<Juice>();
         juicesComponents = input();
         makeJuices(juicesComponents, juices);
+        juices.sort((Juice juice1, Juice juice2) -> juice1.getSize() - juice2.getSize());
         Components components = new Components(juicesComponents);
         Components permanentComponents = new Components(juicesComponents);
         int washesCount = 1;
-        int i;
+        int i = 0;
         int j;
+        int k;
         boolean flag = false;
+        
+        String tempName;
         int maxSize;
         while(!flag) {
             maxSize = maxJuiceSize(juices);
-            while(j < maxSize)
+            components.sort();
+            j = 0;
+            flag = true;
+            while(j < maxSize) {
+                
+                k = 0;
+                while(juices.get(k).getSize() == j+1){
+                    
+                    tempName = components.getName(j);
+                    if(juices.get(k).hasComponent(tempName)) {
+                        juices.remove(k);
+                        components.setNum(tempName, components.getNum(tempName)-1);
+                        flag = false;
+                        --k;
+                    }
+                    ++k;
+                }
+                
+                ++j;
+            }
+            washesCount++;
         }
+        
+        System.out.println(washesCount);
     }
     
 }

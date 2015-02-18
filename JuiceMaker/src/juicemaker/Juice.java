@@ -15,4 +15,8 @@ public class Juice {
     public int getSize(){
         return components.size();
     }
+    
+    public boolean hasComponent(String component) {
+        return components.contains(component);
+    }
 }
