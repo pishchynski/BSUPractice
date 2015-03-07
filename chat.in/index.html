@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chatt.in</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="controlTextFieldSize.js"></script>
+        <script src="scripts.js"></script>
+    </head>
+    <body onload="run(); resizeTextArea();">
+        <div id="wrapper">
+            <div id="right-area">
+                <div id="users">
+
+                </div>
+            </div>
+            <div id="header">
+                <div id="login-form">
+                   <input type="text" placeholder="Вашае iмя?">
+                    <input type="password" placeholder="Прыдумайце пароль...">
+                    <button type="submit">Увайсцi</button>
+                </div>
+                <div id="logo">
+                   <h1>Вас вiтае chatt.in'..</h1>
+                </div>
+            </div>
+            <div id="main-area">
+                <div id="messages">
+                    
+                </div>
+            </div>
+            <div id="send-area">
+                <input  type="text" id="message-write-input" placeholder="Набiрайце тут...">
+                <button id="send-button" class="btn-send">Даслаць!</button>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+*.out
+**/build
+**/nbproject
+*.mf
+.idea/
+*.iml
+target
