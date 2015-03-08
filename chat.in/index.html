@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chatt.in</title>
+        <title>80chat</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
@@ -17,22 +17,21 @@
             </div>
             <div id="header">
                 <div id="login-form">
-                   <input type="text" placeholder="Вашае iмя?">
-                    <input type="password" placeholder="Прыдумайце пароль...">
-                    <button type="submit">Увайсцi</button>
+                   <input type="text" id="login-input" placeholder="Your nickname..">
+                    <button type="submit" onclick="onSignInButtonClick()">Come in</button>
                 </div>
                 <div id="logo">
-                   <h1>Вас вiтае chatt.in'..</h1>
+                   <h1>Welcome to 80chat</h1>
                 </div>
             </div>
             <div id="main-area">
                 <div id="messages">
-                    
+
                 </div>
             </div>
             <div id="send-area">
                 <input  type="text" id="message-write-input" placeholder="Набiрайце тут...">
-                <button id="send-button" class="btn-send">Даслаць!</button>
+                <button id="send-button" class="btn-send" onclick="onSendButtonClick()">Даслаць!</button>
             </div>
         </div>
     </body>

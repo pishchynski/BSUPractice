@@ -1,35 +1,59 @@
 function run(){
-    var chatContainer = document.getElementById('send-button');
-
-    chatContainer.addEventListener('buttonClick', delegateEvent);
 }
 
-function delegateEvent(evtObj) {
-    if(evtObj.type == 'buttonClick' && evtObj.target.classList.contains('btn-send')) {
-        onSendButtonClick(evtObj);
+function onSendButtonClick() {
+    var msgField = document.getElementById('message-write-input');
+
+    addMsg(msgField.value);
+}
+
+function onSignInButtonClick(){
+    var loginField = document.getElementById('login-input');
+
+    logUserIn(loginField.value);
+}
+
+function logUserIn(value){
+    if(!value) {
+        alert("Input username!");
+        return;
     }
-}
-
-function onSendButtonClick(){
-    var messageText = document.getElementById('message-write-input');
-    sendMessage(messageText);
+    var user = createNewUser(value);
+    var users = document.getElementById('users');
+    users.appendChild(user);
 
 }
 
-function sendMessage(value) {
-    if (!value) {
+function createNewUser(value){
+    var divItem = document.createElement('div');
+
+    divItem.classList.add('usr');
+    divItem.appendChild(document.createTextNode(value));
+    //var close = document.createElement('img');
+    //close.src = "images/edit.png";
+    //divItem.appendChild(close);
+
+    return divItem;
+}
+
+function addMsg(value){
+    if(!value) {
         return;
     }
 
-    var msg = createMessage(value);
+    var item = createItem(value);
     var messages = document.getElementById('messages');
-
-    messages.appendChild(msg);
+    messages.appendChild(item);
 }
 
-function createMessage(text){
-    var divMsg = document.createElement('div');
+function createItem(value){
+    var divItem = document.createElement('div');
 
-    divMsg.classList.add('msg');
-    divMsg.appendChild(document.createTextNode(text));
+    divItem.classList.add('msg');
+    divItem.appendChild(document.createTextNode(value));
+    var close = document.createElement('img');
+    close.src = "images/close.png";
+    divItem.appendChild(close);
+
+    return divItem;
 }

@@ -81,6 +81,7 @@ body
     margin: 46px 0 60px 0;
     border: 3px solid #020a02;
     background: url("images/terminalbg.png") center;
+    font-weight: bold;
 }
 
 #message-write-input
