@@ -15,7 +15,7 @@ body
 
 #header
 {
-    margin: 0 300px 0 0;
+    margin: 0 200px 0 0;
     padding-left: 15px;
     background-color: #406448;
     border: 3px solid #272e27;
@@ -50,7 +50,7 @@ body
     background-size: 100% 100%;
     padding: 5px;
     height: 100%;
-    margin: 0 300px 0 0;
+    margin: 0 200px 0 0;
 }
 
 #messages
@@ -58,18 +58,19 @@ body
     margin: 2% auto auto 7%;
     height: 88%;
     width: 85%;
+    overflow: auto;
 }
 
 #send-area
 {
     height: 60px;
     background-color: #272e27;
-    margin: 0 300px 0 0;
+    margin: 0 200px 0 0;
 }
 
 #right-area
 {
-    width: 300px;
+    width: 200px;
     float: right;
     height: 99%;
     border: 3px solid #272e27;
@@ -90,4 +91,15 @@ body
     margin-top: 20px;
     margin-left: 5px;
     width: 80%;
+}
+
+.msg
+{
+    width: 100%;
+}
+
+.msg img
+{
+    display: block;
+    float: right;
 }

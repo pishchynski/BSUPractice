@@ -1,3 +1,6 @@
+
+var username = null;
+
 function run(){
 }
 
@@ -18,6 +21,7 @@ function logUserIn(value){
         alert("Input username!");
         return;
     }
+    window.username = value;
     var user = createNewUser(value);
     var users = document.getElementById('users');
     users.appendChild(user);
@@ -41,6 +45,12 @@ function addMsg(value){
         return;
     }
 
+    if(!window.username){
+        alert("You must be logged in!");
+        return;
+    }
+
+
     var item = createItem(value);
     var messages = document.getElementById('messages');
     messages.appendChild(item);
@@ -50,7 +60,8 @@ function createItem(value){
     var divItem = document.createElement('div');
 
     divItem.classList.add('msg');
-    divItem.appendChild(document.createTextNode(value));
+    var messageText = username + ': ' + value;
+    divItem.appendChild(document.createTextNode(messageText));
     var close = document.createElement('img');
     close.src = "images/close.png";
     divItem.appendChild(close);
