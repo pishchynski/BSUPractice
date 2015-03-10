@@ -64,7 +64,15 @@ function createItem(value){
     divItem.appendChild(document.createTextNode(messageText));
     var close = document.createElement('img');
     close.src = "images/close.png";
+    close.setAttribute("id", "remove-button");
+    close.setAttribute("onclick", "removeMsg(this)");
     divItem.appendChild(close);
-
     return divItem;
+
+}
+
+function removeMsg(item){
+    var parentItem = item.parentNode;
+    (parentItem.parentNode).removeChild(parentItem);
+    return;
 }
