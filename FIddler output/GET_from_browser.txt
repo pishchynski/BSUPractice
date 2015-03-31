@@ -1,0 +1,15 @@
+GET http://localhost:999/chat?token=TE11EN HTTP/1.1
+Host: localhost:999
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:36.0) Gecko/20100101 Firefox/36.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: be-BY,be;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+
+HTTP/1.1 200 OK
+Date: Tue, 31 Mar 2015 15:19:08 GMT
+Access-control-allow-origin: *
+Content-length: 46
+
+{"messages":["1","2","","4"],"token":"TN43EN"}
