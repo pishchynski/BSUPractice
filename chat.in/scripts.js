@@ -38,7 +38,6 @@ function onSendButtonClick() {
 
 function onSignInButtonClick(){
     var loginField = document.getElementById('login-input');
-
     logUserIn(loginField.value);
 }
 
@@ -61,7 +60,11 @@ function logUserIn(value){
 
 function changeUserName(name){
     var currentUserName = document.getElementById('yourName');
-    currentUserName.textContent.replace((window.username).toString(), name);
+    var users = document.getElementById('users');
+    users.removeChild(currentUserName);
+    var user = createNewUser(name);
+    users.appendChild(user);
+    window.username = name;
 }
 
 function createNewUser(value){
@@ -114,7 +117,19 @@ function createItem(msgStruct){
 function removeMsg(item){
     var parentItem = item.parentNode;
     (parentItem.parentNode).removeChild(parentItem);
+    removeMsgFromLocal(item.parentNode);
     return;
+}
+
+function removeMsgFromLocal(item){
+    var msgNum = item.attributes['id'].value;
+    for(var i = 0; i < messagesList.length; ++i){
+        if(msgNum == messagesList[i].id){
+            messagesList.splice(i, 1);
+            store(messagesList);
+            break;
+        }
+    }
 }
 
 function store(listToSave) {
